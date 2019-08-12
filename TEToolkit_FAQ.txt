@@ -1,0 +1,64 @@
+Q: 
+Why do I get the following error when running TEtranscripts?
+  Error: 'module' object has no attribute 'AlignmentFile'
+  [Exception type: AttributeError, raised in TEtranscripts:199]
+   
+A: 
+This error arises due to an old version of the pysam library being used. TEtranscripts depends on pysam library version above 0.8, and is incompatible with older pysam libraries.
+To check your pysam version, run the following commands on your command prompt:
+  $ python
+  >>> import pysam
+  >>> print pysam.__version__
+If the output is not '0.8' or higher (e.g. '0.8.3'), then you will need to install a new version of pysam.
+
+———
+
+Q:
+I installed pysam version 0.8 (or higher), but why do I still get the following issue?
+  Error: 'module' object has no attribute 'AlignmentFile'
+  [Exception type: AttributeError, raised in TEtranscripts:199]
+
+A:
+This is probably due to having both the newer (version 0.8 or higher) and an older version installed, but python calling the older version by default.
+
+If you installed pysam through pip, you can type:
+  $ pip list
+This should show you the version of the package that was installed with pip.
+To find the location of your pysam installed through pip, you can type:
+  $ pip show pysam
+
+If you installed from source (e.g. python setup.py install), you can run the following commands:
+  $ python
+  >>> import pysam
+  >>> print pysam.__version__
+  '0.8.3'
+  >>> print pysam.__file__
+  '/lib/python2.6/site-packages/pysam-0.8.3-py2.6-linux-x86_64.egg/pysam/__init__.pyc'
+This will tell you where the default pysam library is installed.
+
+If your newer version of pysam is not listed, this likely means that it is not on the python search path. You can confirm this by running the following:
+  $ python
+  >>> import sys
+  >>> print "\n".join(sys.path)
+For example, if pysam.__file__ produces this:
+'/lib/python2.6/site-packages/pysam-0.8.3-py2.6-linux-x86_64.egg/pysam/__init__.pyc'
+Then you should ensure that '/lib/python2.6/site-packages/pysam-0.8.3-py2.6-linux-x86_64' should be in the output above.
+
+If you do not find the folder containing your pysam installation, then you will need to add it to the search path. You can do this by setting your PYTHONPATH variable.
+This can be done either by running the following command:
+  $ export PYTHONPATH=/{path to your pysam version 0.8}:$PYTHONPATH
+or add the command above to your .bashrc file
+The former will enable python to use the newer pysam library for that particular session, while the latter will enable all future sessions to use the newer pysam library. This is useful if the newer pysam library might cause conflicts with other programs.
+
+If your folder is in the search path, but listed after the folder with the default pysam, you can follow the procedure in the paragraph above to ensure that Python chooses the newer version of pysam as its default.
+
+———
+
+Q:
+Where can I find a transposable element GTF file for the organism or genome build that I want to use for my analysis?
+
+A:
+You can look at see what is available here (http://labshare.cshl.edu/shares/mhammelllab/www-data/TEToolkit/TE_GTF/). If what you're looking for is not there, you can contact us (mhammell at cshl dot edu, or yjin at cshl dot edu). We will try to generate it for you.
+
+———
+
