@@ -13,9 +13,9 @@ analysis using DESeq2.
 
 `MHammell Lab <http://hammelllab.labsites.cshl.edu/software>`_
 
-Created by Ying Jin, Yuan Hao, Molly Hammell, June 2017
+Created by Ying Jin, Yuan Hao, Molly Gale Hammell, June 2017
 
-Contact: Ying Jin (yjin@cshl.edu)
+Contact: Molly Gale Hammell (mhammell@cshl.edu)
 
 Requirements
 ------------
