@@ -96,7 +96,7 @@ LOBJS= src/TEToolkit/Candidate_Peaks.o \
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 TEpeaks: $(TEToolkitLIB) $(HTSLIB) src/TEpeaks.o src/narrow_TEpeaks.o
-	$(CC) -lpthread $(LDFLAGS)  -o $@ src/TEpeaks.o src/narrow_TEpeaks.o $(TEToolkitLIB) $(HTSLIB) $(LDLIBS) -lz -lm
+	$(CC) $(LDFLAGS)  -o $@ src/TEpeaks.o src/narrow_TEpeaks.o $(TEToolkitLIB) $(HTSLIB) $(LDLIBS) -lz -lm -lpthread
 
 #libTEToolkit.so: $(LOBJS) $(HTSLIB)
 #	$(CC) -pthread $(LDFLAGS) -o $@ $(AOBJS) $(HTSLIB) $(LDLIBS) $(LIBCURSES) -lm -lz
