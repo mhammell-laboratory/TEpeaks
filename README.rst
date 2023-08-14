@@ -15,7 +15,7 @@ analysis using DESeq2.
 
 Created by Ying Jin, Yuan Hao, Molly Gale Hammell, June 2017
 
-Contact: Molly Gale Hammell (mhammell@cshl.edu)
+Contact: mghcompbio@gmail.com
 
 Requirements
 ------------
